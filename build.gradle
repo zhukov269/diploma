@@ -1,0 +1,63 @@
+plugins {
+    id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
+    id "io.freefair.lombok" version "8.4"
+}
+
+repositories {
+    mavenCentral()
+}
+
+def selenideVersion = "7.7.3",
+    restAssuredVersion = "5.4.0",
+    allureVersion = "2.21.0",
+    junitVersion = "5.10.1",
+    jacksonVersion = "2.16.1",
+    aspectjweaverVersion = '1.9.20.1'
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+dependencies {
+
+
+            // Rest Assured
+            testImplementation("io.rest-assured:rest-assured:5.3.2")
+
+            // JUnit 5
+            testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+
+            // Lombok
+            compileOnly("org.projectlombok:lombok:1.18.30")
+            annotationProcessor("org.projectlombok:lombok:1.18.30")
+            testCompileOnly("org.projectlombok:lombok:1.18.30")
+            testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
+
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
