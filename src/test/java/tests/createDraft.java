@@ -19,32 +19,32 @@ public class createDraft {
     @Step ()
     @Test
     public void sendCreateRequest() {
-        NewDraft request = new NewDraft(
-                30966,
-                "29.06.2025",
-                null,
-                "Стандартный",
-                null,
-                7,
-                null,
-                null,
-                null,
-                null,
-                0,
-                null,
-                1,
-                "Черновик",
-                "Тест Тестовый",
-                null,
-                null,
-                null,
-                null,
-                null
-        );
+//        NewDraft request = new NewDraft(
+//                30966,
+//                "29.06.2025",
+//                null,
+//                "Стандартный",
+//                null,
+//                7,
+//                null,
+//                null,
+//                null,
+//                null,
+//                0,
+//                null,
+//                1,
+//                "Черновик",
+//                "Тест Тестовый",
+//                null,
+//                null,
+//                null,
+//                null,
+//                null
+//        );
 
         given()
                 .contentType(ContentType.JSON)
-                .body(request)
+//                .body(request)
                 .when()
                 .post("https://s77wbtom001ts01.mg-tpm.rt.ru/tpmmgbackend/tpm/tpm-cpr-detail/v1/create-draft?login=anna.mikhanova") // замените на ваш эндпоинт
                 .then()
