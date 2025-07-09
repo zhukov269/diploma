@@ -1,6 +1,8 @@
 package tests;
 
+import API.CreateDraft;
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
 import models.lombok.LoginBodyLombockModel;
 import models.lombok.LoginResponse;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,17 +21,15 @@ public class Autorizathion extends TestBase {
     @Test
 
     @DisplayName("Аутенфикация")
-
-      void  Autenthication() {
+    void Autenthication() {
         LoginBodyLombockModel authData = new LoginBodyLombockModel();
-        authData.setUsername("anna.mikhanova2@rt.ru");
-        authData.setPassword("anna.mikhanova2");
+        authData.setUsername("anna.mikhanova35@rt.ru");
+        authData.setPassword("anna.mikhanova35");
 
-//        step("Autenthication", ()->
-        String token =  given()
+        String token = step("Autenthication", () ->
+                given()
                         .filter(withCustomTemplates())
                         .contentType(ContentType.JSON)
-                        .baseUri("https://s77wbtom001ts01.mg-tpm.rt.ru/")
                         .body(authData)
                         .log().body()
                         .when()
@@ -40,22 +40,26 @@ public class Autorizathion extends TestBase {
                         .statusCode(200)
                         .extract()
                         .body().asString()
+        );
 
 
-
-        ;
         LoginResponse response = new LoginResponse();
 
-//        step("autorization correct+ token", ()->
-//
-//        given()
-//                .contentType(ContentType.JSON)
-////                .header(new Header("Authorization", "Bearer" + response.getToken())
-////                .log().headers()
-//                .log().body()
-//
-//
-//       ) );
+
+        step("autorization correct+ token", () ->
+
+                given()
+                        .log().headers()
+                        .log().body()
+
+                        .contentType(ContentType.JSON)
+                        .header(new Header("Authorization", "Bearer " + token))
+                        .post("/tpmmgbackend/authorize-correct")
+                        .then()
+                        .contentType(ContentType.JSON)
+                        .log().all()
+
+                        );
 
 
     }

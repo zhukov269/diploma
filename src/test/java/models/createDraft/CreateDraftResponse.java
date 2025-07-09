@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 
 @Data
 @AllArgsConstructor
-public class UserRequest {
+public class CreateDraftResponse {
     private int id;
     private String lastName;
     private String firstName;
@@ -17,8 +17,8 @@ public class UserRequest {
     private Station[] stations;
     private Role[] roles;
     private String disabled;
-    private String fromDate;
-    private String toDate;
+    public String fromDate;
+    public String toDate;
     private int undelivered;
     private Permission[] permissions;
 }
