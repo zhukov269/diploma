@@ -1,5 +1,4 @@
-package models.getSource;
-
+package models.getDst;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 
-public class getSource {
-
+public class SourceOperators {
+    private String name;
 }

@@ -1,85 +1,79 @@
 package API;
 
 
-import io.restassured.RestAssured;
+
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
 import models.createDraft.*;
 import models.kpmFirstStep.SaveCprType;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import io.qameta.allure.Step;
 import tests.TestBase;
 
 
+import static API.Autenthication.token;
 import static io.restassured.RestAssured.given;
+import static java.lang.Thread.sleep;
 
 public class GetHeader extends TestBase {
 
 
 
 
-    @Step ()
-    @Test
-    public void updateHeader() {
+
+
+    public static void updateHeader() {
 
         CreateDraftResponse draftResponse = given().contentType(ContentType.JSON)
                 .when()
-                .get("https://s77wbtom001ts01.mg-tpm.rt.ru/tpmmgbackend/tpm/tpm-cpr-detail/v1/create-draft?login=anna.mikhanova") // замените на ваш эндпоинт
+                .header(new Header("Authorization", "Bearer " + token))
+                .get("https://s77wbtom001ts01.mg-tpm.rt.ru/tpmmgbackend/tpm/tpm-cpr-detail/v1/create-draft?login=anna.mikhanova")
                 .then()
-                .statusCode(200) // или 200, в зависимости от ожидаемого ответа
+                .log().all()
                 .extract()
                 .as(CreateDraftResponse.class);
 
-//       GetHeader requestBody = new GetHeader(
-//                draftResponse.getId(),
-//                "06.07.2025",
-//                null,
-//                "Стандартный",
-//                null,
-//                7,
-//                null,
-//                "asdsa",
-//                null,
-//                null,
-//                5,
-//                "06.07.2025",
-//                1,
-//                "Черновик",
-//                "Тест Тестовый",
-//                "Перемаршрутизация МГ",
-//                null,
-//                null,
-//                null,
-//                null
-//        );
+
 
         SaveCprType requestBody = new SaveCprType(
                 5,
                 "Перемаршрутизация МГ"
         );
 
-        given().contentType(ContentType.JSON)
+        given().contentType(ContentType.JSON)// Перемаршутизация МГ
                 .when()
-                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/save-cpr-type?cprId= "+ draftResponse.getId())
-        ;
-
-
-        given().contentType(ContentType.JSON)
-                .when()
-                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/save-cpr-control-date?cprId= "+ draftResponse.getId())
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .body().asString()
-
-                ;
-
-          given().contentType(ContentType.JSON)
-                .when()
-                .get("/tpmmgbackend/tpm/tpm-cpr-detail/v1/get-header?cprId= "+ draftResponse.getId())
+                .header(new Header("Authorization", "Bearer " + token))
+                .body(requestBody)
+                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/save-cpr-type?cprId="+ draftResponse.getId())
                 .then()
                 .statusCode(200)
-                .log().body();  // или 200, в зависимости от ожидаемого ответа
+
+        ;
+
+        try {
+            Thread.sleep(1000); // Добавлена обработка InterruptedException
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt(); // Восстанавливаем статус прерывания
+            throw new RuntimeException("Thread was interrupted", e);
+        }
+
+
+//        given().contentType(ContentType.JSON)// контрольная Дата
+//                .when()
+//                .header(new Header("Authorization", "Bearer " + token))
+//                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/save-cpr-control-date?cprId= "+ draftResponse.getId())
+//                .then()
+//                .contentType(ContentType.JSON)
+//                .extract()
+//                .body().asString()
+//
+//                ;
+
+//          given().contentType(ContentType.JSON)// Сохранение первого шага КПМ
+//                .when()
+//                  .header(new Header("Authorization", "Bearer " + token))
+//                .get("/tpmmgbackend/tpm/tpm-cpr-detail/v1/get-header?cprId="+ draftResponse.getId())
+//                .then()
+//                .statusCode(200)
+//                .log().body();  // или 200, в зависимости от ожидаемого ответа
 
 
 

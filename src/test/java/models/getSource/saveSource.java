@@ -1,12 +1,12 @@
 package models.getSource;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
 
-public class getSource {
+public class saveSource {
+    private Integer typeId;
 
 }

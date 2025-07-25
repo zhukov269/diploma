@@ -20,6 +20,7 @@ public class TestBase {
     @BeforeAll
     public static void setBrowserParams() {
         RestAssured.baseURI = "https://s77wbtom001ts01.mg-tpm.rt.ru/";
+
 //        Configuration.pageLoadStrategy = "eager";
 //        Configuration.browser = System.getProperty("browser", "chrome");
 //        Configuration.browserVersion = System.getProperty("version", "127.0");
