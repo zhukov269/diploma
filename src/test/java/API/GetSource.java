@@ -13,9 +13,9 @@ import static io.restassured.RestAssured.given;
 public class GetSource extends TestBase {
 
 
-    @Step ()
-    @Test
-    public void getSource() {
+
+
+    public static void getSource() {
          given().contentType(ContentType.JSON)// Выбор группы операторов "Национальные"
                  .header(new Header("Authorization", "Bearer " + token))
                 .when()

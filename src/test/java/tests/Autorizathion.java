@@ -1,9 +1,7 @@
 package tests;
 
-import API.Autenthication;
-import API.CreateDraft;
+import API.*;
 
-import API.GetHeader;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
@@ -39,6 +37,14 @@ public class Autorizathion extends TestBase {
         step("Сохранить первый шаг КПМ", () ->
                 GetHeader.updateHeader()
         );
+
+        step("Сохранить источник КПМ", () ->
+                GetSource.getSource()
+        );
+
+//        step("Сохранить направление КПМ", () ->
+//                GetDstTest.getDst()
+//        );
 
 
     }

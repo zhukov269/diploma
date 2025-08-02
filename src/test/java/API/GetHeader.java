@@ -4,6 +4,7 @@ package API;
 
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
+import io.restassured.response.Response;
 import models.createDraft.*;
 import models.kpmFirstStep.SaveCprType;
 import tests.TestBase;
@@ -15,6 +16,8 @@ import static java.lang.Thread.sleep;
 
 public class GetHeader extends TestBase {
 
+    String draftId = CreateDraft.draftId;
+
 
 
 
@@ -22,14 +25,7 @@ public class GetHeader extends TestBase {
 
     public static void updateHeader() {
 
-        CreateDraftResponse draftResponse = given().contentType(ContentType.JSON)
-                .when()
-                .header(new Header("Authorization", "Bearer " + token))
-                .get("https://s77wbtom001ts01.mg-tpm.rt.ru/tpmmgbackend/tpm/tpm-cpr-detail/v1/create-draft?login=anna.mikhanova")
-                .then()
-                .log().all()
-                .extract()
-                .as(CreateDraftResponse.class);
+
 
 
 
@@ -42,9 +38,10 @@ public class GetHeader extends TestBase {
                 .when()
                 .header(new Header("Authorization", "Bearer " + token))
                 .body(requestBody)
-                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/save-cpr-type?cprId="+ draftResponse.getId())
+                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/save-cpr-type?cprId="+ CreateDraft.draftId )
                 .then()
                 .statusCode(200)
+                .log().all()
 
         ;
 
@@ -70,7 +67,7 @@ public class GetHeader extends TestBase {
 //          given().contentType(ContentType.JSON)// Сохранение первого шага КПМ
 //                .when()
 //                  .header(new Header("Authorization", "Bearer " + token))
-//                .get("/tpmmgbackend/tpm/tpm-cpr-detail/v1/get-header?cprId="+ draftResponse.getId())
+//                .get("/tpmmgbackend/tpm/tpm-cpr-detail/v1/get-header?cprId="+ 31500)
 //                .then()
 //                .statusCode(200)
 //                .log().body();  // или 200, в зависимости от ожидаемого ответа

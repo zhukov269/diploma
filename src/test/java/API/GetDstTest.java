@@ -16,9 +16,8 @@ import static io.restassured.RestAssured.given;
 public class GetDstTest extends TestBase {
 
 
-    @Step ()
-    @Test
-    public void getSource() {
+
+    public static void getDst() {
 
         Cities requestCities = new Cities(
                  "80",

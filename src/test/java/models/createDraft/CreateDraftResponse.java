@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 public class CreateDraftResponse {
-    private Integer id;
+    private String Id;
     private String createDateTime;
     private String releaseDateTime;
     private String priorityName;
@@ -30,4 +31,6 @@ public class CreateDraftResponse {
     private String releaseDateTimeFormatted;
     private String fromDateFormatted;
     private String controlDateFormatted;
+
+
 }
