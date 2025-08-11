@@ -4,8 +4,6 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import models.lombok.LoginBodyLombockModel;
 import org.junit.jupiter.api.DisplayName;
-
-import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static models.specs.Spec.RequestSpec;

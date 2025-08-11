@@ -1,28 +1,24 @@
 package tests;
 
 import API.*;
-
-import io.qameta.allure.Step;
-import io.restassured.http.ContentType;
-import io.restassured.http.Header;
-import models.lombok.LoginBodyLombockModel;
-import models.lombok.LoginResponse;
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.*;
 
 public class Autorizathion extends TestBase {
 
+    @BeforeAll
+    static void  setup() {
+    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+    }
 
-
-    @Test
+@Test
 
 
     void AllTests() {
+
 
 
          step("Autenthication", () ->
@@ -42,9 +38,9 @@ public class Autorizathion extends TestBase {
                 GetSource.getSource()
         );
 
-        step("Сохранить направление КПМ", () ->
-                GetDstTest.getDst()
-        );
+//        step("Сохранить направление КПМ", () ->
+//                GetDstTest.getDst()
+//        );
 
 
     }

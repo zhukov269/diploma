@@ -19,21 +19,11 @@ import static models.specs.Spec.ResponseSpec;
 public   class CreateDraft extends TestBase {
     public static String draftId;
 
-
-
-
-
-
-
-
     public static   void createDraft() {
 
         LoginBodyLombockModel authData = new LoginBodyLombockModel();
         authData.setUsername("anna.mikhanova35@rt.ru");
         authData.setPassword("anna.mikhanova35");
-
-
-
 
         step("autorization correct+ token", () ->
 

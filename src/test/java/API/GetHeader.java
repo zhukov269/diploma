@@ -4,16 +4,10 @@ package API;
 
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import models.createDraft.*;
 import models.kpmFirstStep.SaveCprType;
 import tests.TestBase;
-
-
 import static API.Autenthication.token;
 import static io.restassured.RestAssured.given;
-import static java.lang.Thread.sleep;
 import static models.specs.Spec.RequestSpec;
 import static models.specs.Spec.ResponseSpec;
 
@@ -21,16 +15,7 @@ public class GetHeader extends TestBase {
 
     String draftId = CreateDraft.draftId;
 
-
-
-
-
-
     public static void updateHeader() {
-
-
-
-
 
         SaveCprType requestBody = new SaveCprType(
                 5,
@@ -46,13 +31,6 @@ public class GetHeader extends TestBase {
                 .spec(ResponseSpec)
 
         ;
-//
-//        try {
-//            Thread.sleep(1000); // Добавлена обработка InterruptedException
-//        } catch (InterruptedException e) {
-//            Thread.currentThread().interrupt(); // Восстанавливаем статус прерывания
-//            throw new RuntimeException("Thread was interrupted", e);
-//        }
 
 
 //        given().contentType(ContentType.JSON)// контрольная Дата
