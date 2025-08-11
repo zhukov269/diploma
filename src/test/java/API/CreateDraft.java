@@ -13,6 +13,8 @@ import static API.Autenthication.token;
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
+import static models.specs.Spec.RequestSpec;
+import static models.specs.Spec.ResponseSpec;
 
 public   class CreateDraft extends TestBase {
     public static String draftId;
@@ -35,26 +37,24 @@ public   class CreateDraft extends TestBase {
 
         step("autorization correct+ token", () ->
 
-                given()
-                        .log().headers()
-                        .log().body()
+                given(RequestSpec)
 
                         .contentType(ContentType.JSON)
                         .header(new Header("Authorization", "Bearer " + token))
                         .post("/tpmmgbackend/authorize-correct")
                         .then()
+                        .spec(ResponseSpec)
                         .contentType(ContentType.JSON)
-                        .log().all()
+
 
         );
         // Нажимаем кнопку "Создать новый КПМ"
-        CreateDraftResponse draftResponse = given().contentType(ContentType.JSON)
+        CreateDraftResponse draftResponse = given(RequestSpec).contentType(ContentType.JSON)
                 .when()
                 .header(new Header("Authorization", "Bearer " + token))
                 .post("https://s77wbtom001ts01.mg-tpm.rt.ru/tpmmgbackend/tpm/tpm-cpr-detail/v1/create-draft?login=anna.mikhanova") // замените на ваш эндпоинт
                 .then()
-                .log().all()
-                .statusCode(200)// или 200, в зависимости от ожидаемого ответа
+                .spec(ResponseSpec)
                 .extract()
                 .as(CreateDraftResponse.class);
         draftId = draftResponse.getId();

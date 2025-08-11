@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
+import static models.specs.Spec.RequestSpec;
+import static models.specs.Spec.ResponseSpec;
 
 public class Autenthication {
 
@@ -21,17 +23,14 @@ public class Autenthication {
         authData.setPassword("anna.mikhanova35");
 
          token = step("Autenthication", () ->
-                given()
-                        .filter(withCustomTemplates())
+                given(RequestSpec)
                         .contentType(ContentType.JSON)
                         .body(authData)
-                        .log().body()
                         .when()
                         .post("/tpmmgbackend/authenticate")
                         .then()
+                        .spec(ResponseSpec)
                         .contentType("text/plain")
-                        .log().all()
-                        .statusCode(200)
                         .extract()
                         .body().asString()
         );
@@ -42,16 +41,15 @@ public class Autenthication {
 
         step("autorization correct+ token", () ->
 
-                given()
-                        .log().headers()
-                        .log().body()
+                given(RequestSpec)
 
                         .contentType(ContentType.JSON)
                         .header(new Header("Authorization", "Bearer " + token))
                         .post("/tpmmgbackend/authorize-correct")
                         .then()
+                        .spec(ResponseSpec)
                         .contentType(ContentType.JSON)
-                        .log().all()
+
 
         );
     }

@@ -45,7 +45,9 @@ dependencies {
                     'io.rest-assured:rest-assured:5.3.1',
                     "io.rest-assured:json-schema-validator:$restAssuredVersion",
                     "io.qameta.allure:allure-rest-assured:$allureVersion",
-                    "org.junit.jupiter:junit-jupiter:5.10.0")
+                    "org.junit.jupiter:junit-jupiter:5.10.0",
+                     'org.json:json:20231013'
+            )
 
 
 

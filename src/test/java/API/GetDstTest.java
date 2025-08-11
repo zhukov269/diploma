@@ -1,69 +1,76 @@
 package API;
 
-import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import models.getDst.Cities;
-import models.getDst.SourceOperators;
-import models.getDst.defDst;
-import models.getDst.getDst;
-import org.junit.jupiter.api.Test;
+import org.json.JSONObject;
 import tests.TestBase;
 
 import static API.Autenthication.token;
 import static io.restassured.RestAssured.given;
+import static models.specs.Spec.RequestSpec;
+import static models.specs.Spec.ResponseSpec;
 
 public class GetDstTest extends TestBase {
+
+    String draftId = CreateDraft.draftId;
 
 
 
     public static void getDst() {
 
+
+
+//        Cities requestCities2 = new Cities(
+//                "81",
+//                "Тольятти",
+//                "Самарская область",
+//                "Волга"
+//
+//        );
+//
+//        given().contentType(ContentType.JSON)// Выбор оператора Мегафон, города Тольятти
+//                .header(new Header("Authorization", "Bearer " + token))
+//                .when()
+//                .body(requestCities2)
+//                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/city-dst") // замените на ваш эндпоинт
+//                .then()
+//                .statusCode(200) // или 200, в зависимости от ожидаемого ответа
+//        ;
         Cities requestCities = new Cities(
-                 "80",
+                "80",
                 "Самара",
                 "Самарская область",
                 "Волга"
 
         );
 
-
-
-        given().contentType(ContentType.JSON)// Выбор оператора Мегафон, города Самара
+        given(RequestSpec).contentType(ContentType.JSON)// Выбор оператора Мегафон, города Самара
                 .header(new Header("Authorization", "Bearer " + token))
                 .when()
                 .body(requestCities)
                 .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/city-dst") // замените на ваш эндпоинт
                 .then()
-                .statusCode(200) // или 200, в зависимости от ожидаемого ответа
+                .spec(ResponseSpec)
         ;
 
-        Cities requestCities2 = new Cities(
-                "81",
-                "Тольятти",
-                "Самарская область",
-                "Волга"
+        JSONObject saveDst = new JSONObject()
+                .put("cities", requestCities)
+                .put("cprId", CreateDraft.draftId)
+                .put("defs", (Object) null )
+                .put("mrfs", (Object) null )
+                .put("prefixes", (Object) null )
+                .put("regions", (Object) null )
+                .put("sourceOperators", "ПАО МЕГАФОН" )
+                ;
 
-        );
-
-        given().contentType(ContentType.JSON)// Выбор оператора Мегафон, города Тольятти
+        given(RequestSpec).contentType(ContentType.JSON)// сохранение Направления
                 .header(new Header("Authorization", "Bearer " + token))
                 .when()
-                .body(requestCities2)
-                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/city-dst") // замените на ваш эндпоинт
+                .body(saveDst)
+                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/save-dst")
                 .then()
-                .statusCode(200) // или 200, в зависимости от ожидаемого ответа
-        ;
-
-        
-
-        given().contentType(ContentType.JSON)// сохранение Источника
-                .header(new Header("Authorization", "Bearer " + token))
-                .when()
-                .body(requestCities)
-                .post("/tpmmgbackend/tpm/tpm-cpr-detail/v1/save-dst") // замените на ваш эндпоинт
-                .then()
-                .statusCode(200) // или 200, в зависимости от ожидаемого ответа
+                .spec(ResponseSpec)
         ;
 
     }

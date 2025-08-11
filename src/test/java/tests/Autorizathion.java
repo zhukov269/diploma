@@ -42,9 +42,9 @@ public class Autorizathion extends TestBase {
                 GetSource.getSource()
         );
 
-//        step("Сохранить направление КПМ", () ->
-//                GetDstTest.getDst()
-//        );
+        step("Сохранить направление КПМ", () ->
+                GetDstTest.getDst()
+        );
 
 
     }
