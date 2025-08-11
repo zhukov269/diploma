@@ -60,9 +60,12 @@ dependencies {
 
 }
 
+task simple_test{}
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
 
 tasks.withType(Test) {
     useJUnitPlatform()
