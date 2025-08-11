@@ -60,7 +60,7 @@ dependencies {
 
 }
 
-task simple_test{}
+task simple_test(type: Test){}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
