@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 
-public class Autorizathion extends TestBase {
+public class ApiTests extends TestBase {
 
     @BeforeAll
     static void  setup() {

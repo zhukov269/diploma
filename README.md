@@ -12,7 +12,7 @@
 
 * <a href="#allure">Allure report</a>
 
-* <a href="#jira">Integration with Jira</a>
+* <a href="#jira">Интеграция с Jira</a>
 
 
 
@@ -62,8 +62,7 @@
 ----
 <a id="console"></a>
 ## Запуск из терминала
-___
-**Local launch**
+**Локальный запуск**
 ```bash  
 gradle simple_test
 ```
@@ -80,19 +79,15 @@ simple_test
 
 **Main report page**
 <p align="center">  
-<a href="https://jenkins.autotests.cloud/job/egorovaa_uitests_17/allure/"><img src="images/screen/allure_report_main.png" alt="Allure Report main" width="950"/></a>  
+<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="src/test/resoursec/allure.png" alt="Jira" width="950"/></a> 
 </p>
 
-**Test cases**
-<p align="center">  
-<a href="https://jenkins.autotests.cloud/job/egorovaa_uitests_17/allure/"><img src="images/screen/allure_report_cases.png" alt="Allure Report testcases" width="950"/></a>  
-</p>
 
 ----
 <a id="jira"></a>
-## Integration with Jira ([Ссылка](https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58))
+## Интеграция с Jira ([Ссылка](https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58))
 <p align="center">  
-<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="resoursec/jira.png" alt="Jira" width="950"/></a>  
+<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="src/test/resoursec/jira.png" alt="Jira" width="950"/></a>  
 </p>
 
 
