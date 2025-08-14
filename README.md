@@ -78,7 +78,7 @@ simple_test
 <a id="jira"></a>
 ## Интеграция с Jira ([Ссылка](https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58))
 <p align="center">  
-<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="resourсec/jira.png" alt="Jira" width="950"/></a>  
+<a href='https://postimg.cc/QBRJmct9' target='_blank'><img src='https://i.postimg.cc/QBRJmct9/image.png' border='0' alt='image'/></a>
 </p>
 
 
