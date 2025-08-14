@@ -10,7 +10,7 @@
 
 * <a href="#console">Запуск из терминала</a>
 
-* <a href="#allure">Allure report</a>
+* <a href="#allure">Отчёт Allure</a>
 
 * <a href="#jira">Интеграция с Jira</a>
 
@@ -30,7 +30,7 @@
 <a href="https://www.atlassian.com/software/jira"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg" title="Jira" alt="Jira" width="40" height="40"/> </a>
 </p>
 
-- Разрабатывал автотесты **Java** для проекта, на котором раннее работал ручным тестировщиком. Web разработан на Flutter, на который нету возможности сделать UI тесты, поэтому всё сделано на API слое. В моём проекте я соединил несколько тестов в один, запускаются они последовательно. Результатом этих тестов является сформированный документ (Коммерческий план маршрутизации).
+- Разрабатывал автотесты **Java** для проекта, на котором раннее работал ручным тестировщиком. Web разработан на Flutter, на который нету возможности сделать UI тесты, поэтому всё сделано на API слое. В моём проекте я соединил несколько тестов в один, запускаются они последовательно. Результатом этих тестов является сформированный документ (Коммерческий план маршрутизации). Часть кода закомментирована, так, как продолжаю работу над этими тестами, не успел сделать всё, что планировал. 
 
 
 
@@ -75,19 +75,12 @@ simple_test
 
 ----
 <a id="allure"></a>
-## Allure report ([link](https://jenkins.autotests.cloud/job/egorovaa_uitests_17/allure/))
-
-**Main report page**
-<p align="center">  
-<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="src/test/resoursec/allure.png" alt="Jira" width="950"/></a> 
-</p>
-
-
+## Отчёт Allure ([Ссылка](https://jenkins.autotests.cloud/job/Zhukov%20diploma/6/allure/))
 ----
 <a id="jira"></a>
 ## Интеграция с Jira ([Ссылка](https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58))
 <p align="center">  
-<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="src/test/resoursec/jira.png" alt="Jira" width="950"/></a>  
+<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="src/test/resourсec/jira.png" alt="Jira" width="950"/></a>  
 </p>
 
 
