@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 
-public class SourceOperators {
+public class sourceOperators {
     private String name;
 }

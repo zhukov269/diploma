@@ -17,17 +17,16 @@ public class Autorizathion extends TestBase {
 @Test
 
 
-    void AllTests() {
+    void AllTests()
 
-
-
-         step("Autenthication", () ->
+    {
+        step("Autenthication", () ->
                 Autenthication.LoginOn()
         );
 
 
         step("Содать Новый КПМ", () ->
-        CreateDraft.createDraft()
+                CreateDraft.createDraft()
         );
 
         step("Сохранить первый шаг КПМ", () ->
@@ -38,13 +37,11 @@ public class Autorizathion extends TestBase {
                 GetSource.getSource()
         );
 
-//        step("Сохранить направление КПМ", () ->
-//                GetDstTest.getDst()
-//        );
+        step("Сохранить направление КПМ", () ->
+                GetDstTest.getDst()
+        );
 
 
     }
-
-
 }
 
