@@ -55,9 +55,7 @@
 ----
 <a id="jenkins"></a>
 ## Build в Jenkins ([Ссылка](https://jenkins.autotests.cloud/job/Zhukov%20diploma/))
-<p align="center">  
-<a href="https://jenkins.autotests.cloud/job/egorovaa_uitests_17/"><img src="images/screen/jenkins_report.png" alt="Jenkins" width="950"/></a>  
-</p>
+
 
 ----
 <a id="console"></a>
@@ -80,7 +78,7 @@ simple_test
 <a id="jira"></a>
 ## Интеграция с Jira ([Ссылка](https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58))
 <p align="center">  
-<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="src/test/resourсec/jira.png" alt="Jira" width="950"/></a>  
+<a href="https://ihelp.rt.ru/secure/Tests.jspa#/testCase/TPMMG-T58"><img src="resourсec/jira.png" alt="Jira" width="950"/></a>  
 </p>
 
 
